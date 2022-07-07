@@ -54,21 +54,6 @@ let computerscore = 0;
 
 function gameRound(playerChoice, computerChoice) {
   let choices = ['rock', 'paper', 'scissor'];
-  function pChoice() {
-    const rockBtn = document.querySelector('#rock');
-    const paperBtn = document.querySelector('#paper');
-    const scissorBtn = document.querySelector('#scissor');
-
-    rockBtn.addEventListener("onclick", function (){
-      playerChoice = 'rock';
-    });
-    paperBtn.addEventListener("onclick", function () {
-      playerChoice = 'paper';
-    });
-    scissorBtn.addEventListener("onclick", function () {
-      playerchoice = 'scissor';
-    });
-  }
 
 
   computerChoice = choices[Math.floor(Math.random() * choices.length)];
@@ -96,25 +81,41 @@ function gameRound(playerChoice, computerChoice) {
   }
 
 }
+function gameStart() {
+  const rockBtn = document.querySelector('#rock');
+  const paperBtn = document.querySelector('#paper');
+  const scissorBtn = document.querySelector('#scissor');
 
-
-/*while (computerscore < Number(5) && playerscore < Number(5)){
-  gameRound();
-  if(computerscore == 5){
-    console.log('THE COMPUTER WON THE MATCH!!!');
-  }else if(playerscore == 5){
-    console.log('YOU WON THE MATCH!!!')
-  }else{}
-}*/
-
-for (i = 0; computerscore < Number(5) && playerscore < Number(5); i++) {
-  gameRound();
-  if (computerscore == 5) {
-    console.log('THE COMPUTER WON THE MATCH!!!');
-  } else if (playerscore == 5) {
-    console.log('YOU WON THE MATCH!!!')
-  } else { }
+  rockBtn.addEventListener("click", function () {
+    return gameRound('rock');
+  });
+  paperBtn.addEventListener("click", function () {
+    return gameRound('paper');
+  });
+  scissorBtn.addEventListener("click", function () {
+    return gameRound('scissor');
+  });
 }
+
+
+
+
+
+function oneGame() {
+  while (computerscore < Number(5) && playerscore < Number(5)) {
+    if (computerscore == 5) {
+      console.log('THE COMPUTER WON THE MATCH!!!');
+    } else if (playerscore == 5) {
+      console.log('YOU WON THE MATCH!!!')
+    } else {
+      gameStart();
+    }
+    
+  }
+}
+
+oneGame(gameStart());
+
 
 
 
