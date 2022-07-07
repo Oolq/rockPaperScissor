@@ -27,82 +27,101 @@ for (let n = 1; n <= 100; n++) {
   console.log(line);
   */
 
-  //CHESSBOARD
+//CHESSBOARD
 
- /* let size = 10;
+/* let size = 10;
 
-  let board = "";
-  
-  for (let y = 0; y < size; y++) {
-    for (let x = 0; x < size; x++) {
-      if ((x + y) % 2 == 0) {
-        board += " ";
-      } else {
-        board += "#";
-      }
-    }
-    board += "\n";
-  }
-  
-  console.log(board);
-  */
- let player
- let computer
- let playerscore = 0;
- let computerscore = 0;
+ let board = "";
  
-  
-  function gameRound(playerChoice, computerChoice){
+ for (let y = 0; y < size; y++) {
+   for (let x = 0; x < size; x++) {
+     if ((x + y) % 2 == 0) {
+       board += " ";
+     } else {
+       board += "#";
+     }
+   }
+   board += "\n";
+ }
+ 
+ console.log(board);
+ */
+
+let playerscore = 0;
+let computerscore = 0;
+
+
+
+function gameRound(playerChoice, computerChoice) {
   let choices = ['rock', 'paper', 'scissor'];
- computerChoice = choices[Math.floor(Math.random()* choices.length)];
+  function pChoice() {
+    const rockBtn = document.querySelector('#rock');
+    const paperBtn = document.querySelector('#paper');
+    const scissorBtn = document.querySelector('#scissor');
+
+    rockBtn.addEventListener("onclick", function (){
+      playerChoice = 'rock';
+    });
+    paperBtn.addEventListener("onclick", function () {
+      playerChoice = 'paper';
+    });
+    scissorBtn.addEventListener("onclick", function () {
+      playerchoice = 'scissor';
+    });
+  }
+
+
+  computerChoice = choices[Math.floor(Math.random() * choices.length)];
   console.log('Computer:' + computerChoice);
   console.log('Player:' + playerChoice);
 
-  if(playerChoice == 'scissor' && computerChoice == 'rock'|| playerChoice == 'rock' && computerChoice == 'paper' || playerChoice == 'paper' && computerChoice == 'scissor'){
+  if (playerChoice == 'scissor' && computerChoice == 'rock' || playerChoice == 'rock' && computerChoice == 'paper' || playerChoice == 'paper' && computerChoice == 'scissor') {
     console.log('YOU LOST THIS ROUND!!!');
-    player = 'lost';
-    computer ='winner';
-    scoring();
-  } else if(computerChoice == playerChoice){
+
+    computerscore++;
+    console.log('Pscore:' + playerscore);
+    console.log('Cscore:' + computerscore);
+  } else if (computerChoice === playerChoice) {
     console.log('IT\'S A DRAW!!!');
-    player && computer === 'draw';
-    scoring();
 
-  }else{
+    console.log('Pscore:' + playerscore);
+    console.log('Cscore:' + computerscore);
+
+  } else {
     console.log('YOU WIN THIS ROUND!!!');
-    player = 'winner';
-    computer = 'lost';
-    scoring();
-  }
 
-  
-  }
-
-  function scoring(){
-    
-    if(player == 'winner' && computer == 'lost'){
-      playerscore++;
-    } else if( player == 'lost' && computer == 'winner'){
-      computerscore++ ;
-    }else if(player && computer === 'draw'){
-      playerscore = playerscore;
-      computerscore = computerscore;
-    }else{}
-
+    playerscore++;
     console.log('Pscore:' + playerscore);
     console.log('Cscore:' + computerscore);
   }
 
- 
- gameRound('rock');
- gameRound('paper');
- gameRound('scissor');
+}
+
+
+/*while (computerscore < Number(5) && playerscore < Number(5)){
+  gameRound();
+  if(computerscore == 5){
+    console.log('THE COMPUTER WON THE MATCH!!!');
+  }else if(playerscore == 5){
+    console.log('YOU WON THE MATCH!!!')
+  }else{}
+}*/
+
+for (i = 0; computerscore < Number(5) && playerscore < Number(5); i++) {
+  gameRound();
+  if (computerscore == 5) {
+    console.log('THE COMPUTER WON THE MATCH!!!');
+  } else if (playerscore == 5) {
+    console.log('YOU WON THE MATCH!!!')
+  } else { }
+}
 
 
 
 
-  
- 
+
+
+
 
 
 
