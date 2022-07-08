@@ -73,7 +73,7 @@ function gameRound(playerChoice, computerChoice) {
     console.log('Cscore:' + computerscore);
 
   } else {
-    console.log('YOU WIN THIS ROUND!!!');
+    console.log('YOU WON THIS ROUND!!!');
 
     playerscore++;
     console.log('Pscore:' + playerscore);
@@ -102,27 +102,27 @@ function gameStart() {
 
 
 function oneGame() {
-  while (computerscore < Number(5) && playerscore < Number(5)) {
-    if (computerscore == 5) {
-      console.log('THE COMPUTER WON THE MATCH!!!');
-    } else if (playerscore == 5) {
-      console.log('YOU WON THE MATCH!!!')
-    } else {
-      gameStart();
-    }
-    
+  for(i = 0; computerscore < 5 && playerscore < 5; i++){
+  // gameStart();
+   if (playerscore == 5){
+    console.log('you win');
+   }else if(computerscore == 5){
+    console.log('you lost');
+   }else(
+     oneGame()
+   )
   }
 }
 
-oneGame(gameStart());
 
 
+function endGame() {
+  computerscore = 0;
+  playerscore = 0;
+  gameStart();
+}
 
-
-
-
-
-
+gameStart();
 
 
 
