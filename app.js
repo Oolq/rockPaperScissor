@@ -80,8 +80,12 @@ function gameRound(playerChoice, computerChoice) {
     console.log('Cscore:' + computerscore);
   }
 
-}
+  checkWinner();
+  }
+
+
 function gameStart() {
+
   const rockBtn = document.querySelector('#rock');
   const paperBtn = document.querySelector('#paper');
   const scissorBtn = document.querySelector('#scissor');
@@ -101,25 +105,28 @@ function gameStart() {
 
 
 
-function oneGame() {
-  for(i = 0; computerscore < 5 && playerscore < 5; i++){
-  // gameStart();
-   if (playerscore == 5){
-    console.log('you win');
-   }else if(computerscore == 5){
-    console.log('you lost');
-   }else(
-     oneGame()
-   )
-  }
-}
+// function oneGame() {
+//   gameStart();
+//   for(i = 0; computerscore < 5 && playerscore < 5; i++){
+//    if (playerscore == 5 && computerscore == 5){
+//     return checkWinner();
+//    }else if(computerscore > 5 && playeracore > 5){
+//     return checkWinner();
+//    }else{
+//     return gameStart();
+//    }
+   
+//   }
+// }
 
 
 
-function endGame() {
-  computerscore = 0;
-  playerscore = 0;
-  gameStart();
+function checkWinner() {
+  if(playerscore == 5 ){
+    console.log('HELLO')
+  }else if( computerscore == 5){
+    console.log('HIIIIIIII')
+  }else{}
 }
 
 gameStart();
