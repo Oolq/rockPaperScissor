@@ -114,22 +114,52 @@ function playAgain() {
   const newRound = document.createElement("button");
   const textNew = document.createTextNode("Play Again");
   newRound.appendChild(textNew);
-  newRound.setAttribute('class','playAgain');
-  const element = document.getElementById("choices");
+  newRound.setAttribute('class', 'playAgain');
+  const element = document.querySelector("#choices");
   element.appendChild(newRound);
-  //const elements = document.getElementsByClassName("choice");
-  //while (elements.length > 0) elements[0].remove();
+  const elementss = document.getElementsByClassName("choice");
+  while (elementss.length > 0) elementss[0].remove();
   newRound.addEventListener("click", function () {
+    playerscore = 0;
+    computerscore = 0;
+    const rockBtn = document.createElement("button");
+    const paperBtn = document.createElement("button");
+    const scissorBtn = document.createElement("button");
+    const textRock = document.createTextNode("rock");
+    const textPaper = document.createTextNode("paper");
+    const textScissor = document.createTextNode("scissor");
+    rockBtn.appendChild(textRock);
+    paperBtn.appendChild(textPaper);
+    scissorBtn.appendChild(textScissor);
+    rockBtn.setAttribute('class', 'choice');
+    paperBtn.setAttribute('class', 'choice');
+    scissorBtn.setAttribute('class', 'choice');
     return newGame();
   });
-
 }
 
 function newGame() {
-  playerscore = 0;
-  computerscore = 0;
   const elements = document.getElementsByClassName('playAgain');
   while (elements.length > 0) elements[0].remove();
+
+  // playerscore = 0;
+  // computerscore = 0;
+  // const rockBtn = document.createElement("button");
+  // const paperBtn = document.createElement("button");
+  // const scissorBtn = document.createElement("button");
+  // const textRock = document.createTextNode("rock");
+  // const textPaper = document.createTextNode("paper");
+  // const textScissor = document.createTextNode("scissor");
+  // rockBtn.appendChild(textRock);
+  // paperBtn.appendChild(textPaper);
+  // scissorBtn.appendChild(textScissor);
+  // rockBtn.setAttribute('class', 'choice');
+  // paperBtn.setAttribute('class', 'choice');
+  // scissorBtn.setAttribute('class', 'choice');
+
+
+  // const elements = document.getElementsByClassName('playAgain');
+  // while (elements.length > 0) elements[0].remove();
 
 }
 
