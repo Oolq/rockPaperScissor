@@ -49,6 +49,20 @@ for (let n = 1; n <= 100; n++) {
 
 let playerscore = 0;
 let computerscore = 0;
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorBtn = document.querySelector('#scissor');
+
+rockBtn.addEventListener("click", function () {
+  return gameRound('rock');
+});
+paperBtn.addEventListener("click", function () {
+  return gameRound('paper');
+});
+scissorBtn.addEventListener("click", function () {
+  return gameRound('scissor');
+});
+
 
 
 
@@ -81,55 +95,45 @@ function gameRound(playerChoice, computerChoice) {
   }
 
   checkWinner();
-  }
 
-
-function gameStart() {
-
-  const rockBtn = document.querySelector('#rock');
-  const paperBtn = document.querySelector('#paper');
-  const scissorBtn = document.querySelector('#scissor');
-
-  rockBtn.addEventListener("click", function () {
-    return gameRound('rock');
-  });
-  paperBtn.addEventListener("click", function () {
-    return gameRound('paper');
-  });
-  scissorBtn.addEventListener("click", function () {
-    return gameRound('scissor');
-  });
 }
-
-
-
-
-
-// function oneGame() {
-//   gameStart();
-//   for(i = 0; computerscore < 5 && playerscore < 5; i++){
-//    if (playerscore == 5 && computerscore == 5){
-//     return checkWinner();
-//    }else if(computerscore > 5 && playeracore > 5){
-//     return checkWinner();
-//    }else{
-//     return gameStart();
-//    }
-   
-//   }
-// }
-
-
 
 function checkWinner() {
-  if(playerscore == 5 ){
-    console.log('HELLO')
-  }else if( computerscore == 5){
-    console.log('HIIIIIIII')
-  }else{}
+  if (playerscore == 5) {
+    console.log('____YOU WON THE GAME_____')
+    playAgain();
+  } else if (computerscore == 5) {
+    console.log('____YOU LOST THE GAME_____')
+    playAgain();
+  } else { }
 }
 
-gameStart();
+
+
+function playAgain() {
+  const newRound = document.createElement("button");
+  const textNew = document.createTextNode("Play Again");
+  newRound.appendChild(textNew);
+  newRound.setAttribute('class','playAgain');
+  const element = document.getElementById("choices");
+  element.appendChild(newRound);
+  //const elements = document.getElementsByClassName("choice");
+  //while (elements.length > 0) elements[0].remove();
+  newRound.addEventListener("click", function () {
+    return newGame();
+  });
+
+}
+
+function newGame() {
+  playerscore = 0;
+  computerscore = 0;
+  const elements = document.getElementsByClassName('playAgain');
+  while (elements.length > 0) elements[0].remove();
+
+}
+
+
 
 
 
