@@ -63,6 +63,14 @@ scissorBtn.addEventListener("click", function () {
   return gameRound('scissor');
 });
 
+function scoreDisplay() {
+  let cScoreDisplay = document.querySelector("#cScore");
+  cScoreDisplay.innerHTML = ("COMPUTER SCORE:" + computerscore)
+  let pScoreDisplay = document.querySelector("#pScore");
+  pScoreDisplay.innerHTML = ("PLAYER SCORE:" + playerscore)
+}
+
+scoreDisplay();
 
 
 
@@ -78,8 +86,10 @@ function gameRound(playerChoice, computerChoice) {
     console.log('YOU LOST THIS ROUND!!!');
 
     computerscore++;
+    scoreDisplay();
     console.log('Pscore:' + playerscore);
     console.log('Cscore:' + computerscore);
+
   } else if (computerChoice === playerChoice) {
     console.log('IT\'S A DRAW!!!');
 
@@ -90,6 +100,7 @@ function gameRound(playerChoice, computerChoice) {
     console.log('YOU WON THIS ROUND!!!');
 
     playerscore++;
+    scoreDisplay();
     console.log('Pscore:' + playerscore);
     console.log('Cscore:' + computerscore);
   }
@@ -117,23 +128,13 @@ function playAgain() {
   newRound.setAttribute('class', 'playAgain');
   const element = document.querySelector("#choices");
   element.appendChild(newRound);
-  const elementss = document.getElementsByClassName("choice");
-  while (elementss.length > 0) elementss[0].remove();
+  element.children[0].style.visibility = "hidden";
+  element.children[1].style.visibility = "hidden";
+  element.children[2].style.visibility = "hidden";
   newRound.addEventListener("click", function () {
-    playerscore = 0;
-    computerscore = 0;
-    const rockBtn = document.createElement("button");
-    const paperBtn = document.createElement("button");
-    const scissorBtn = document.createElement("button");
-    const textRock = document.createTextNode("rock");
-    const textPaper = document.createTextNode("paper");
-    const textScissor = document.createTextNode("scissor");
-    rockBtn.appendChild(textRock);
-    paperBtn.appendChild(textPaper);
-    scissorBtn.appendChild(textScissor);
-    rockBtn.setAttribute('class', 'choice');
-    paperBtn.setAttribute('class', 'choice');
-    scissorBtn.setAttribute('class', 'choice');
+    element.children[0].style.visibility = "visible";
+    element.children[1].style.visibility = "visible";
+    element.children[2].style.visibility = "visible";
     return newGame();
   });
 }
@@ -142,24 +143,9 @@ function newGame() {
   const elements = document.getElementsByClassName('playAgain');
   while (elements.length > 0) elements[0].remove();
 
-  // playerscore = 0;
-  // computerscore = 0;
-  // const rockBtn = document.createElement("button");
-  // const paperBtn = document.createElement("button");
-  // const scissorBtn = document.createElement("button");
-  // const textRock = document.createTextNode("rock");
-  // const textPaper = document.createTextNode("paper");
-  // const textScissor = document.createTextNode("scissor");
-  // rockBtn.appendChild(textRock);
-  // paperBtn.appendChild(textPaper);
-  // scissorBtn.appendChild(textScissor);
-  // rockBtn.setAttribute('class', 'choice');
-  // paperBtn.setAttribute('class', 'choice');
-  // scissorBtn.setAttribute('class', 'choice');
-
-
-  // const elements = document.getElementsByClassName('playAgain');
-  // while (elements.length > 0) elements[0].remove();
+  playerscore = 0;
+  computerscore = 0;
+  scoreDisplay();
 
 }
 
